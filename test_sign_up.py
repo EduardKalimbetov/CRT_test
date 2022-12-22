@@ -1,12 +1,7 @@
 import pytest
 from selenium.webdriver.common.by import By
-import time
 
-
-
-
-@pytest.mark.parametrize('link', ['http://localhost:5000/']
-                         )
+@pytest.mark.parametrize('link',['http://localhost:5000/'])
 def test_sung_up_name(browser, link):
 
     browser.get(f'{link}')
@@ -21,16 +16,10 @@ def test_sung_up_name(browser, link):
     button_sing_up2 = browser.find_element(By.TAG_NAME, 'button')
     button_sing_up2.click()
 
+    assert browser.find_element(By.CSS_SELECTOR,'[class="notification is-danger"]') == True,'Good test falls'
 
-    assert browser.find_element(By.CSS_SELECTOR, '[class="notification is-danger"]') == True, 'Good test falls'
-
-
-    time.sleep(5)
-
-
-@pytest.mark.parametrize('link', ['http://localhost:5000/']
-                         )
-def test_sung_up_name_email(browser,link, name, email):
+@pytest.mark.parametrize('link', ['http://localhost:5000/'])
+def test_sung_up_name_email(browser,link):
     browser.get(f'{link}')
 
     button_sing_up = browser.find_element(By.CSS_SELECTOR, '[href="/signup"]')
@@ -46,13 +35,11 @@ def test_sung_up_name_email(browser,link, name, email):
     button_sing_up2 = browser.find_element(By.TAG_NAME, 'button')
     button_sing_up2.click()
 
-    time.sleep(5)
-
     assert browser.find_element(By.TAG_NAME, 'h3') == 'trye', 'Test proxodit dalche'
 
-@pytest.mark.parametrize('link', ['http://localhost:5000/']
-                         )
-def test_sung_up_email_password(browser,link, email,password):
+@pytest.mark.parametrize('link', ['http://localhost:5000/'])
+def test_sung_up_email_password(browser,link):
+
     browser.get(f'{link}')
 
     button_sing_up = browser.find_element(By.CSS_SELECTOR, '[href="/signup"]')
@@ -68,12 +55,11 @@ def test_sung_up_email_password(browser,link, email,password):
     button_sing_up2 = browser.find_element(By.TAG_NAME, 'button')
     button_sing_up2.click()
 
-    time.sleep(5)
-
     assert browser.find_element(By.TAG_NAME, 'h3') != 'trye', 'Test ne vipolnil uslovie'
 
-@pytest.mark.parametrize('link', ['http://localhost:5000/'])
+@pytest.mark.parametrize('link',['http://localhost:5000/'])
 def test_sung_up_password(browser,link):
+
     browser.get(f'{link}')
 
     button_sing_up = browser.find_element(By.CSS_SELECTOR, '[href="/signup"]')
@@ -86,14 +72,10 @@ def test_sung_up_password(browser,link):
     button_sing_up2 = browser.find_element(By.TAG_NAME, 'button')
     button_sing_up2.click()
 
-    time.sleep(5)
-
     assert browser.find_element(By.CSS_SELECTOR, '[class="notification is-danger"]') == True, 'Good test falls'
 
-@pytest.mark.parametrize('link', ['http://localhost:5000/']
-                         )
-
-def test_sung_up(browser, link, name,email,password):
+@pytest.mark.parametrize('link',['http://localhost:5000/'])
+def test_sung_up(browser, link):
     browser.get(f'{link}')
 
     button_sing_up = browser.find_element(By.CSS_SELECTOR, '[href="/signup"]')
@@ -111,8 +93,6 @@ def test_sung_up(browser, link, name,email,password):
 
     button_sing_up2 = browser.find_element(By.TAG_NAME, 'button')
     button_sing_up2.click()
-
-    time.sleep(5)
 
     assert browser.find_element(By.TAG_NAME, 'h3') != 'trye', 'Test ne vipolnil uslovie'
 
